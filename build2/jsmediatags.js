@@ -14,7 +14,7 @@ var mediaFileReaders = [];
 var mediaTagReaders = [];
 
 function read(location, callbacks) {
-  new Reader(location).read(callbacks);
+  return new Reader(location).read(callbacks);
 }
 
 function isRangeValid(range, fileSize) {
@@ -62,6 +62,8 @@ class Reader {
       },
       onError: callbacks.onError
     });
+
+    return fileReader;
   }
 
   _getFileReader() {
